@@ -1,0 +1,20 @@
+pipeline {
+ agent any
+  stages {
+      stage('Pull') {
+         steps {
+             git 'https://github.com/vvpranay77/pipeline.git'
+         }
+      }
+      stage('Package') {
+         steps {
+            bat 'mvn package'
+         }
+      }
+      stage('Execute') {
+         steps {
+            bat 'java -jar "C:/programdata/Jenkins/.jenkins/workspace/job55/target/pranay1-1.0-SNAPSHOT.jar"'
+         }
+      }
+   }
+}
